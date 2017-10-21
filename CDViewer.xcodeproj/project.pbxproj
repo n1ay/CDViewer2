@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E8B424B1F9B643D00513B14 /* PrimarySplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8B424A1F9B643D00513B14 /* PrimarySplitViewController.swift */; };
+		8E8B424D1F9B6D4C00513B14 /* MasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8B424C1F9B6D4C00513B14 /* MasterTableViewController.swift */; };
 		ACE34C051F8CB1D3007A5E82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE34C041F8CB1D3007A5E82 /* AppDelegate.swift */; };
 		ACE34C071F8CB1D3007A5E82 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE34C061F8CB1D3007A5E82 /* ViewController.swift */; };
 		ACE34C0A1F8CB1D3007A5E82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACE34C081F8CB1D3007A5E82 /* Main.storyboard */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E8B424A1F9B643D00513B14 /* PrimarySplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimarySplitViewController.swift; sourceTree = "<group>"; };
+		8E8B424C1F9B6D4C00513B14 /* MasterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterTableViewController.swift; sourceTree = "<group>"; };
 		ACE34C011F8CB1D3007A5E82 /* CDViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CDViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACE34C041F8CB1D3007A5E82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACE34C061F8CB1D3007A5E82 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +61,8 @@
 				ACE34C041F8CB1D3007A5E82 /* AppDelegate.swift */,
 				ACE34C061F8CB1D3007A5E82 /* ViewController.swift */,
 				ACE34C081F8CB1D3007A5E82 /* Main.storyboard */,
+				8E8B424A1F9B643D00513B14 /* PrimarySplitViewController.swift */,
+				8E8B424C1F9B6D4C00513B14 /* MasterTableViewController.swift */,
 				ACE34C0B1F8CB1D3007A5E82 /* Assets.xcassets */,
 				ACE34C0D1F8CB1D3007A5E82 /* LaunchScreen.storyboard */,
 				ACE34C101F8CB1D3007A5E82 /* Info.plist */,
@@ -136,6 +142,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E8B424B1F9B643D00513B14 /* PrimarySplitViewController.swift in Sources */,
+				8E8B424D1F9B6D4C00513B14 /* MasterTableViewController.swift in Sources */,
 				ACE34C071F8CB1D3007A5E82 /* ViewController.swift in Sources */,
 				ACE34C051F8CB1D3007A5E82 /* AppDelegate.swift in Sources */,
 			);
