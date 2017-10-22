@@ -46,7 +46,6 @@ class MasterTableViewController: UITableViewController {
         }
     }
 
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return CDdata.count
     }
@@ -65,4 +64,15 @@ class MasterTableViewController: UITableViewController {
         
         return cell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let detail = segue.destination as? DetailView {
+            if let cell = sender as? UITableViewCell {
+                if let index = tableView.indexPath(for: cell) {
+                    detail.CD = (CDdata[index.row] as? [String: Any])!
+                }
+            }
+        }
+    }
+
 }
