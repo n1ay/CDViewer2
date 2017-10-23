@@ -9,37 +9,56 @@
 import Foundation
 import UIKit
 
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
 class DetailView: UITableViewController {
     
-    var CD: [String: Any] = [:]
+    var Album: CD = CD()
+    var index: Int = 0
+    var maxIndex: Int = 0
+    
+    @IBOutlet weak var authorTextField: UITextField!
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var genreTextField: UITextField!
+    @IBOutlet weak var yearTextField: UITextField!
+    @IBOutlet weak var tracksTextField: UITextField!
+    @IBOutlet weak var navigationBar: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    func setCD(CD: [String: Any]) {
-        self.CD = CD
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+    func setTextFields() {
+        authorTextField.text = Album.artist
+        titleTextField.text = Album.album
+        genreTextField.text = Album.genre
+        yearTextField.text = String(Album.year)
+        tracksTextField.text = String(Album.tracks)
+        navigationBar.title = "\(index+1) z \(maxIndex)"
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = UITableViewCell()
-        /*switch indexPath.row {
-            case 0: cell.textLabel?.text = CD["artist"] as? String
-            case 1: cell.textLabel?.text = CD["album"] as? String
-            case 2: cell.textLabel?.text = CD["genre"] as? String
-            case 3: cell.textLabel?.text = String((CD["year"] as? Int)!)
-            case 4: cell.textLabel?.text = String((CD["tracks"] as? Int)!)
-            default: cell.textLabel?.text = ""
-        }*/
-        return cell
+    func setCD() {
+        Album.artist = authorTextField.text!
+        Album.album = titleTextField.text!
+        Album.genre = genreTextField.text!
+        Album.year = Int(yearTextField.text!)!
+        Album.tracks = Int(tracksTextField.text!)!
     }
+
 }
 

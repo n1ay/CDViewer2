@@ -11,7 +11,7 @@ import UIKit
 
 class MasterTableViewController: UITableViewController {
     
-    var CDdata: [Any] = []
+    var CDdata: [CD] = []
     var actualIndex: Int = 0
     var minIndex: Int = 0
     var maxIndex: Int = 0
@@ -34,7 +34,11 @@ class MasterTableViewController: UITableViewController {
                     print(error!)
                 } else {
                     if let usableData = data {
-                        self.CDdata = try! JSONSerialization.jsonObject(with: usableData, options: []) as! [Any];
+                        let data = try! JSONSerialization.jsonObject(with: usableData, options: []) as! [Any];
+                        for iter in data {
+                            let obj = iter as! [String: Any]
+                            self.CDdata.append(CD(dict: obj))
+                        }
                         self.maxIndex = self.CDdata.endIndex-1
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
@@ -54,9 +58,8 @@ class MasterTableViewController: UITableViewController {
         var cell = UITableViewCell()
         var count = 0
         for idx in 0...maxIndex {
-            var cd = CDdata[idx] as? [String: Any]
             if count == indexPath.row {
-                cell.textLabel?.text = cd!["album"] as? String
+                cell.textLabel?.text = CDdata[idx].album
                 break
             }
             count+=1
@@ -65,11 +68,19 @@ class MasterTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showDetail", sender: indexPath)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let detail = segue.destination as? DetailView {
-            if let cell = sender as? UITableViewCell {
-                if let index = tableView.indexPath(for: cell) {
-                    detail.CD = (CDdata[index.row] as? [String: Any])!
+        if segue.identifier == "showDetail" {
+            if let detail = segue.destination as? DetailView {
+                if let index = sender as? IndexPath {
+                    detail.Album = CDdata[index.row]
+                    detail.index = index.row
+                    detail.maxIndex = CDdata.endIndex
+                    detail.viewDidLoad()
+                    detail.setTextFields()
                 }
             }
         }
