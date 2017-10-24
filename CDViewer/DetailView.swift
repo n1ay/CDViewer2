@@ -37,6 +37,7 @@ class DetailView: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        setTextFields()
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,7 +50,7 @@ class DetailView: UITableViewController {
         genreTextField.text = Album.genre
         yearTextField.text = String(Album.year)
         tracksTextField.text = String(Album.tracks)
-        navigationBar.title = "\(index+1) z \(maxIndex)"
+        navigationBar.title = "Edycja rekordu \(index+1) z \(maxIndex)"
     }
     
     func setCD() {

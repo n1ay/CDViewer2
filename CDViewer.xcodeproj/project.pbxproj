@@ -16,6 +16,7 @@
 		ACE34C0A1F8CB1D3007A5E82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACE34C081F8CB1D3007A5E82 /* Main.storyboard */; };
 		ACE34C0C1F8CB1D3007A5E82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACE34C0B1F8CB1D3007A5E82 /* Assets.xcassets */; };
 		ACE34C0F1F8CB1D3007A5E82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACE34C0D1F8CB1D3007A5E82 /* LaunchScreen.storyboard */; };
+		ACFC7D041F9F25C80001E707 /* TableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFC7D031F9F25C80001E707 /* TableRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		ACE34C0B1F8CB1D3007A5E82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ACE34C0E1F8CB1D3007A5E82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ACE34C101F8CB1D3007A5E82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACFC7D031F9F25C80001E707 /* TableRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		ACE34C031F8CB1D3007A5E82 /* CDViewer */ = {
 			isa = PBXGroup;
 			children = (
+				ACFC7D031F9F25C80001E707 /* TableRow.swift */,
 				8EA9BDF31F9CDB5500A685F0 /* DetailView.swift */,
 				8E0280DD1F9E89A800291968 /* CD.swift */,
 				ACE34C041F8CB1D3007A5E82 /* AppDelegate.swift */,
@@ -150,6 +153,7 @@
 			files = (
 				8E8B424B1F9B643D00513B14 /* PrimarySplitViewController.swift in Sources */,
 				8E8B424D1F9B6D4C00513B14 /* MasterTableViewController.swift in Sources */,
+				ACFC7D041F9F25C80001E707 /* TableRow.swift in Sources */,
 				8E0280DE1F9E89A800291968 /* CD.swift in Sources */,
 				ACE34C071F8CB1D3007A5E82 /* ViewController.swift in Sources */,
 				8EA9BDF41F9CDB5500A685F0 /* DetailView.swift in Sources */,

@@ -36,8 +36,9 @@ class MasterTableViewController: UITableViewController {
                     if let usableData = data {
                         let data = try! JSONSerialization.jsonObject(with: usableData, options: []) as! [Any];
                         for iter in data {
-                            let obj = iter as! [String: Any]
-                            self.CDdata.append(CD(dict: obj))
+                            if let obj = iter as? [String: Any] {
+                                self.CDdata.append(CD(dict: obj))
+                            }
                         }
                         self.maxIndex = self.CDdata.endIndex-1
                         DispatchQueue.main.async {
@@ -55,35 +56,29 @@ class MasterTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = UITableViewCell()
-        var count = 0
-        for idx in 0...maxIndex {
-            if count == indexPath.row {
-                cell.textLabel?.text = CDdata[idx].album
-                break
-            }
-            count+=1
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! TableRow
+        
+        let idx=indexPath.row
+                cell.albumLabel.text = CDdata[idx].album
+                cell.artistLabel.text = CDdata[idx].artist
+                cell.yearLabel.text = String(CDdata[idx].year)
         
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showDetail", sender: indexPath)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let indexPath = tableView.indexPathForSelectedRow {
+            let CD = CDdata[indexPath.row]
+            let detail = (segue.destination as! UINavigationController).topViewController as! DetailView
+            
+            detail.Album = CD
+            detail.index = indexPath.row
+            detail.maxIndex = CDdata.endIndex
+            detail.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+            detail.navigationItem.leftItemsSupplementBackButton = true
+        }
+        
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetail" {
-            if let detail = segue.destination as? DetailView {
-                if let index = sender as? IndexPath {
-                    detail.Album = CDdata[index.row]
-                    detail.index = index.row
-                    detail.maxIndex = CDdata.endIndex
-                    detail.viewDidLoad()
-                    detail.setTextFields()
-                }
-            }
-        }
-    }
 
 }
