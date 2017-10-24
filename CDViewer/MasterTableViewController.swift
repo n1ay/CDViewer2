@@ -16,6 +16,8 @@ class MasterTableViewController: UITableViewController {
     var minIndex: Int = 0
     var maxIndex: Int = 0
     
+    @IBOutlet weak var addNewRecordButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getData()
@@ -67,18 +69,25 @@ class MasterTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let indexPath = tableView.indexPathForSelectedRow {
-            let CD = CDdata[indexPath.row]
+        if segue.identifier == "showDetail" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let CD = CDdata[indexPath.row]
+                let detail = (segue.destination as! UINavigationController).topViewController as! DetailView
+                
+                detail.Album = CD
+                detail.index = indexPath.row
+                detail.maxIndex = CDdata.endIndex
+                detail.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+                detail.navigationItem.leftItemsSupplementBackButton = true
+            }
+        } else if segue.identifier == "addNew" {
             let detail = (segue.destination as! UINavigationController).topViewController as! DetailView
-            
-            detail.Album = CD
-            detail.index = indexPath.row
-            detail.maxIndex = CDdata.endIndex
+            detail.Album = CD()
+            detail.index = CDdata.endIndex
+            detail.maxIndex = CDdata.endIndex+1
             detail.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
             detail.navigationItem.leftItemsSupplementBackButton = true
         }
-        
     }
     
-
 }

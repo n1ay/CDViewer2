@@ -45,11 +45,16 @@ class DetailView: UITableViewController {
     }
     
     func setTextFields() {
+        if Album.isEqual(to: CD()) {
+            tracksTextField.text = ""
+            yearTextField.text = ""
+        } else {
+            yearTextField.text = String(Album.year)
+            tracksTextField.text = String(Album.tracks)
+        }
         authorTextField.text = Album.artist
         titleTextField.text = Album.album
         genreTextField.text = Album.genre
-        yearTextField.text = String(Album.year)
-        tracksTextField.text = String(Album.tracks)
         navigationBar.title = "Edycja rekordu \(index+1) z \(maxIndex)"
     }
     
@@ -59,6 +64,19 @@ class DetailView: UITableViewController {
         Album.genre = genreTextField.text!
         Album.year = Int(yearTextField.text!)!
         Album.tracks = Int(tracksTextField.text!)!
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "delete" {
+            if let controller = (segue.destination as! UINavigationController).topViewController as? MasterTableViewController {
+                if maxIndex >= 0 {
+                    controller.maxIndex-=1
+                }
+                if index >= 0 {
+                    controller.CDdata.remove(at: index)
+                }
+            }
+        }
     }
 
 }

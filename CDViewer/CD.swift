@@ -33,4 +33,15 @@ class CD {
         self.tracks = dict["tracks"] as! Int
     }
     
+    func isEqual(to: CD) -> Bool {
+        if year == to.year &&
+            tracks == to.tracks &&
+            artist == to.artist &&
+            genre == to.genre &&
+            album == to.album {
+            return true
+        }
+        return false
+    }
+    
 }

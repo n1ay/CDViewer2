@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1611" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dja-kD-O6z">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dja-kD-O6z">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,14 +19,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="61" id="f7t-6L-0iK" customClass="TableRow" customModule="CDViewer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="106"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="61"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f7t-6L-0iK" id="Pvk-lB-kmL">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="6a2-j0-Vo2">
-                                            <rect key="frame" x="24" y="13" width="343" height="53"/>
+                                            <rect key="frame" x="24" y="13" width="343" height="52.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w97-cU-yKO">
                                                     <rect key="frame" x="0.0" y="0.0" width="31.5" height="13.5"/>
@@ -60,7 +60,7 @@
                                     <outlet property="albumLabel" destination="oFm-bd-HtU" id="jbT-dW-h5c"/>
                                     <outlet property="artistLabel" destination="w97-cU-yKO" id="2hd-qA-poO"/>
                                     <outlet property="yearLabel" destination="gBr-cc-heZ" id="XX8-Xz-wt0"/>
-                                    <segue destination="fwe-9V-dtM" kind="showDetail" id="Ecf-0x-RBO"/>
+                                    <segue destination="fwe-9V-dtM" kind="showDetail" identifier="showDetail" id="Ecf-0x-RBO"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -70,8 +70,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Kamil Kos" id="3KD-oa-U9d">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Tsj-93-gox"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Tsj-93-gox">
+                            <connections>
+                                <segue destination="fwe-9V-dtM" kind="showDetail" identifier="addNew" id="Rwg-bH-reZ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addNewRecordButton" destination="Tsj-93-gox" id="Nzj-oV-lbS"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RwM-mY-W7F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -121,7 +128,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DN7-qJ-5sV" id="pKL-9r-Lma">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jnm-ym-Z3m" userLabel="AuthorTextField">
@@ -147,7 +154,7 @@
                                         <rect key="frame" x="0.0" y="100" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nno-JK-b4a" id="naZ-oY-TU4">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bhr-ux-JIY" userLabel="TitleTextField">
@@ -175,7 +182,7 @@
                                         <rect key="frame" x="0.0" y="172" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eT9-xd-4z0" id="wMK-Za-tiF">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yGl-2D-Pgx" userLabel="GenreTextField">
@@ -200,7 +207,7 @@
                                         <rect key="frame" x="0.0" y="244" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PkH-8j-sxq" id="KeE-qr-0Zw">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="boU-J4-hzn" userLabel="YearTextField">
@@ -226,7 +233,7 @@
                                         <rect key="frame" x="0.0" y="316" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cIZ-bb-KJA" id="gHv-EG-OxZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GNU-fj-Qfz" userLabel="TracksTextField">
@@ -253,7 +260,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="jkW-cl-ggc">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="trash" id="6UT-3W-gK7"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="trash" id="6UT-3W-gK7">
+                            <connections>
+                                <segue destination="pJq-6k-Fib" kind="showDetail" identifier="delete" action="showViewController:sender:" id="cKB-Nc-Pwa"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="authorTextField" destination="Jnm-ym-Z3m" id="WK0-gZ-CIh"/>
@@ -274,7 +285,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fwe-9V-dtM" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iQW-vK-XGb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -289,5 +300,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Ecf-0x-RBO"/>
+        <segue reference="cKB-Nc-Pwa"/>
     </inferredMetricsTieBreakers>
 </document>
