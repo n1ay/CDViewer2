@@ -79,6 +79,9 @@ class MasterTableViewController: UITableViewController {
                 detail.maxIndex = CDdata.endIndex
                 detail.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 detail.navigationItem.leftItemsSupplementBackButton = true
+                if detail.masterView == nil {
+                    detail.masterView = self
+                }
             }
         } else if segue.identifier == "addNew" {
             let detail = (segue.destination as! UINavigationController).topViewController as! DetailView
@@ -87,7 +90,22 @@ class MasterTableViewController: UITableViewController {
             detail.maxIndex = CDdata.endIndex+1
             detail.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
             detail.navigationItem.leftItemsSupplementBackButton = true
+            if detail.masterView == nil {
+                detail.masterView = self
+            }
+            CDdata.append(CD())
+            maxIndex+=1
+            tableView.reloadData()
         }
+    }
+    
+    @IBAction func segueBack (segue: UIStoryboardSegue) {
+        let source = segue.source as! DetailView
+        CDdata.remove(at: source.index)
+        if maxIndex > 0 {
+            maxIndex-=1
+        }
+        tableView.reloadData()
     }
     
 }

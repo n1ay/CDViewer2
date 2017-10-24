@@ -27,12 +27,15 @@ class DetailView: UITableViewController {
     var index: Int = 0
     var maxIndex: Int = 0
     
+    var masterView: MasterTableViewController? = nil
+    
     @IBOutlet weak var authorTextField: UITextField!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var genreTextField: UITextField!
     @IBOutlet weak var yearTextField: UITextField!
     @IBOutlet weak var tracksTextField: UITextField!
     @IBOutlet weak var navigationBar: UINavigationItem!
+    @IBOutlet weak var deleteButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,18 +69,11 @@ class DetailView: UITableViewController {
         Album.tracks = Int(tracksTextField.text!)!
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "delete" {
-            if let controller = (segue.destination as! UINavigationController).topViewController as? MasterTableViewController {
-                if maxIndex >= 0 {
-                    controller.maxIndex-=1
-                }
-                if index >= 0 {
-                    controller.CDdata.remove(at: index)
-                }
-            }
-        }
+    @IBAction func onTextFieldChanged(_ sender: UITextField) {
+        setCD()
+        masterView!.CDdata[index] = Album
+        masterView?.tableView.reloadData()
     }
-
+    
 }
 
