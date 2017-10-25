@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1611" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dja-kD-O6z">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dja-kD-O6z">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,11 +22,11 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="61"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f7t-6L-0iK" id="Pvk-lB-kmL">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="61"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="6a2-j0-Vo2">
-                                            <rect key="frame" x="24" y="13" width="343" height="53"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="6a2-j0-Vo2">
+                                            <rect key="frame" x="16" y="5" width="343" height="52.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w97-cU-yKO">
                                                     <rect key="frame" x="0.0" y="0.0" width="31.5" height="13.5"/>
@@ -128,7 +128,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DN7-qJ-5sV" id="pKL-9r-Lma">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jnm-ym-Z3m" userLabel="AuthorTextField">
@@ -137,7 +137,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
-                                                        <action selector="onTextFieldChanged:" destination="JOi-Z5-Q0T" eventType="editingDidEnd" id="uaB-bR-JA9"/>
+                                                        <action selector="onTextFieldChanged:" destination="JOi-Z5-Q0T" eventType="editingChanged" id="aP4-WH-R9q"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -157,7 +157,7 @@
                                         <rect key="frame" x="0.0" y="100" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nno-JK-b4a" id="naZ-oY-TU4">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bhr-ux-JIY" userLabel="TitleTextField">
@@ -166,8 +166,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
-                                                        <action selector="onTextFieldChanged:" destination="JOi-Z5-Q0T" eventType="valueChanged" id="BBj-uI-u7y"/>
-                                                        <action selector="onTextFieldChanged:" destination="JOi-Z5-Q0T" eventType="editingDidEnd" id="Xsd-K8-MHM"/>
+                                                        <action selector="onTextFieldChanged:" destination="JOi-Z5-Q0T" eventType="editingChanged" id="oM1-ap-TSi"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -189,7 +188,7 @@
                                         <rect key="frame" x="0.0" y="172" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eT9-xd-4z0" id="wMK-Za-tiF">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yGl-2D-Pgx" userLabel="GenreTextField">
@@ -198,8 +197,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
-                                                        <action selector="onTextFieldChanged:" destination="JOi-Z5-Q0T" eventType="valueChanged" id="leA-W0-tKQ"/>
-                                                        <action selector="onTextFieldChanged:" destination="JOi-Z5-Q0T" eventType="editingDidEnd" id="qWT-IH-we7"/>
+                                                        <action selector="onTextFieldChanged:" destination="JOi-Z5-Q0T" eventType="editingChanged" id="0di-gA-f57"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -218,7 +216,7 @@
                                         <rect key="frame" x="0.0" y="244" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PkH-8j-sxq" id="KeE-qr-0Zw">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="boU-J4-hzn" userLabel="YearTextField">
@@ -227,7 +225,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
-                                                        <action selector="onTextFieldChanged:" destination="JOi-Z5-Q0T" eventType="editingDidEnd" id="EAP-4Z-Xky"/>
+                                                        <action selector="onTextFieldChanged:" destination="JOi-Z5-Q0T" eventType="editingChanged" id="yu5-1i-ZLK"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -247,7 +245,7 @@
                                         <rect key="frame" x="0.0" y="316" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cIZ-bb-KJA" id="gHv-EG-OxZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GNU-fj-Qfz" userLabel="TracksTextField">
@@ -256,7 +254,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
-                                                        <action selector="onTextFieldChanged:" destination="JOi-Z5-Q0T" eventType="editingDidEnd" id="epu-Az-vPk"/>
+                                                        <action selector="onTextFieldChanged:" destination="JOi-Z5-Q0T" eventType="editingChanged" id="2E4-17-AnJ"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -265,6 +263,32 @@
                                                 <constraint firstItem="GNU-fj-Qfz" firstAttribute="top" secondItem="gHv-EG-OxZ" secondAttribute="top" constant="5" id="cjl-rJ-eHY"/>
                                                 <constraint firstAttribute="trailing" secondItem="GNU-fj-Qfz" secondAttribute="trailing" constant="12" id="dYM-BV-LUc"/>
                                                 <constraint firstItem="GNU-fj-Qfz" firstAttribute="leading" secondItem="gHv-EG-OxZ" secondAttribute="leading" constant="12" id="hO7-sT-jYm"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="mEv-94-yNK">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="GJn-pt-mGr">
+                                        <rect key="frame" x="0.0" y="360" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GJn-pt-mGr" id="9U2-af-Hkp">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Aa-y1-AF7">
+                                                    <rect key="frame" x="16" y="7.5" width="343" height="30"/>
+                                                    <state key="normal" title="Zapisz"/>
+                                                    <connections>
+                                                        <segue destination="xs9-r4-Bmp" kind="unwind" unwindAction="segueBackSaveWithSegue:" id="dTa-F7-o40"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="0Aa-y1-AF7" secondAttribute="trailing" constant="16" id="9yL-nT-0Ob"/>
+                                                <constraint firstAttribute="bottom" secondItem="0Aa-y1-AF7" secondAttribute="bottom" constant="6" id="f1S-FG-zcW"/>
+                                                <constraint firstItem="0Aa-y1-AF7" firstAttribute="leading" secondItem="9U2-af-Hkp" secondAttribute="leading" constant="16" id="kTl-Lw-gBC"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -279,7 +303,7 @@
                     <navigationItem key="navigationItem" id="jkW-cl-ggc">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="trash" id="6UT-3W-gK7">
                             <connections>
-                                <segue destination="xs9-r4-Bmp" kind="unwind" unwindAction="segueBackWithSegue:" id="zJU-dl-Obs"/>
+                                <segue destination="xs9-r4-Bmp" kind="unwind" unwindAction="segueBackDeleteWithSegue:" id="F1O-Z2-jI9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -288,6 +312,7 @@
                         <outlet property="deleteButton" destination="6UT-3W-gK7" id="gpU-Ti-8fK"/>
                         <outlet property="genreTextField" destination="yGl-2D-Pgx" id="PEm-Td-dKC"/>
                         <outlet property="navigationBar" destination="jkW-cl-ggc" id="wHU-Uy-AtP"/>
+                        <outlet property="saveButton" destination="0Aa-y1-AF7" id="0NR-sp-RjZ"/>
                         <outlet property="titleTextField" destination="bhr-ux-JIY" id="3tc-kT-hvP"/>
                         <outlet property="tracksTextField" destination="GNU-fj-Qfz" id="kz0-bd-03X"/>
                         <outlet property="yearTextField" destination="boU-J4-hzn" id="1jA-hs-Hpj"/>

@@ -27,8 +27,6 @@ class DetailView: UITableViewController {
     var index: Int = 0
     var maxIndex: Int = 0
     
-    var masterView: MasterTableViewController? = nil
-    
     @IBOutlet weak var authorTextField: UITextField!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var genreTextField: UITextField!
@@ -36,10 +34,13 @@ class DetailView: UITableViewController {
     @IBOutlet weak var tracksTextField: UITextField!
     @IBOutlet weak var navigationBar: UINavigationItem!
     @IBOutlet weak var deleteButton: UIBarButtonItem!
+    @IBOutlet weak var saveButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        saveButton.isEnabled = false
         setTextFields()
     }
     
@@ -65,14 +66,16 @@ class DetailView: UITableViewController {
         Album.artist = authorTextField.text!
         Album.album = titleTextField.text!
         Album.genre = genreTextField.text!
-        Album.year = Int(yearTextField.text!)!
-        Album.tracks = Int(tracksTextField.text!)!
+        if let year = Int(yearTextField.text!) {
+            Album.year = year
+        }
+        if let tracks = Int(yearTextField.text!) {
+            Album.tracks = tracks
+        }
     }
     
     @IBAction func onTextFieldChanged(_ sender: UITextField) {
-        setCD()
-        masterView!.CDdata[index] = Album
-        masterView?.tableView.reloadData()
+        saveButton.isEnabled = true
     }
     
 }
