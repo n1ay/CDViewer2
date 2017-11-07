@@ -21,8 +21,7 @@ class MasterTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.loadDataFromFile()
-        self.getData()
+        self.tryLoadDataFromFile()
     }
     
     override func didReceiveMemoryWarning() {
@@ -38,7 +37,13 @@ class MasterTableViewController: UITableViewController {
                     print(error!)
                 } else {
                     self.serializeJSON(data)
-                    self.convertDataToCD()
+                    self.extractDataFromJSON()
+                    let dirPaths =  NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+                    if let docsDir = dirPaths.first {
+                        let myFilePath = docsDir + "/albums.txt"
+                        (self.JSONdata as NSArray).write(toFile: myFilePath, atomically: true)
+                        print("doesn't exists")
+                    }
                 }
             }
             task.resume()
@@ -82,6 +87,8 @@ class MasterTableViewController: UITableViewController {
             CDdata.append(CD())
             maxIndex+=1
             tableView.reloadData()
+            saveToFileJSON()
+            
         }
     }
     
@@ -92,6 +99,7 @@ class MasterTableViewController: UITableViewController {
             maxIndex-=1
         }
         tableView.reloadData()
+        saveToFileJSON()
     }
     
     @IBAction func segueBackSave (segue: UIStoryboardSegue) {
@@ -99,19 +107,19 @@ class MasterTableViewController: UITableViewController {
         source.setCD()
         CDdata[source.index] = source.Album
         tableView.reloadData()
+        saveToFileJSON()
     }
     
-    func loadDataFromFile() {
+    func tryLoadDataFromFile() {
         let dirPaths =  NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         if let docsDir = dirPaths.first {
-            let myFilePath = docsDir + "albums.txt"
+            let myFilePath = docsDir + "/albums.txt"
             if checkIfFileExists() {
                 print("exists")
                 JSONdata = NSArray.init(contentsOfFile:  myFilePath) as! [Any]
-                convertDataToCD()
+                extractDataFromJSON()
             } else {
-                (JSONdata as NSArray).write(toFile: myFilePath, atomically: true)
-                print("doesn't exists")
+                getData()
             }
         }
     }
@@ -122,7 +130,7 @@ class MasterTableViewController: UITableViewController {
         }
     }
     
-    func convertDataToCD() {
+    func extractDataFromJSON() {
         for iter in JSONdata {
             if let obj = iter as? [String: Any] {
                 self.CDdata.append(CD(dict: obj))
@@ -136,8 +144,32 @@ class MasterTableViewController: UITableViewController {
     
     func checkIfFileExists() -> Bool {
         let documentsURL = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-        let fooURL = documentsURL.appendingPathComponent("albums.txt")
-        return FileManager().fileExists(atPath: fooURL.path)
+        let filePath = documentsURL.appendingPathComponent("albums.txt")
+        return FileManager().fileExists(atPath: filePath.path)
     }
     
+    func saveToFileJSON() {
+        print(JSONdata)
+        JSONdata.removeAll()
+        for i in CDdata {
+            JSONdata.append(newRecord(artist: i.artist, album: i.album, genre: i.genre, year: i.year, tracks: i.tracks) as Any)
+        }
+        print(JSONdata)
+        
+        let dirPaths =  NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        if let docsDir = dirPaths.first {
+            let myFilePath = docsDir + "/albums.txt"
+            (self.JSONdata as NSArray).write(toFile: myFilePath, atomically: true)
+        }
+    }
+    
+    func newRecord(artist: String, album: String, genre: String, year: Int, tracks: Int) -> [String: Any] {
+        var data: [String: Any] = [:]
+        data["artist"] = artist
+        data["album"] = album
+        data["genre"] = genre
+        data["year"] = year
+        data["tracks"] = tracks
+        return data
+    }
 }
