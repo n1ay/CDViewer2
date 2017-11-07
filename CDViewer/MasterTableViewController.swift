@@ -12,6 +12,7 @@ import UIKit
 class MasterTableViewController: UITableViewController {
     
     var CDdata: [CD] = []
+    var JSONdata: [Any] = []
     var actualIndex: Int = 0
     var minIndex: Int = 0
     var maxIndex: Int = 0
@@ -20,6 +21,7 @@ class MasterTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.loadDataFromFile()
         self.getData()
     }
     
@@ -35,18 +37,8 @@ class MasterTableViewController: UITableViewController {
                 if error != nil {
                     print(error!)
                 } else {
-                    if let usableData = data {
-                        let data = try! JSONSerialization.jsonObject(with: usableData, options: []) as! [Any];
-                        for iter in data {
-                            if let obj = iter as? [String: Any] {
-                                self.CDdata.append(CD(dict: obj))
-                            }
-                        }
-                        self.maxIndex = self.CDdata.endIndex-1
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
-                        }
-                    }
+                    self.serializeJSON(data)
+                    self.convertDataToCD()
                 }
             }
             task.resume()
@@ -107,6 +99,45 @@ class MasterTableViewController: UITableViewController {
         source.setCD()
         CDdata[source.index] = source.Album
         tableView.reloadData()
+    }
+    
+    func loadDataFromFile() {
+        let dirPaths =  NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        if let docsDir = dirPaths.first {
+            let myFilePath = docsDir + "albums.txt"
+            if checkIfFileExists() {
+                print("exists")
+                JSONdata = NSArray.init(contentsOfFile:  myFilePath) as! [Any]
+                convertDataToCD()
+            } else {
+                (JSONdata as NSArray).write(toFile: myFilePath, atomically: true)
+                print("doesn't exists")
+            }
+        }
+    }
+    
+    func serializeJSON(_ data: Data?) {
+        if let usableData = data {
+            JSONdata = try! JSONSerialization.jsonObject(with: usableData, options: []) as! [Any];
+        }
+    }
+    
+    func convertDataToCD() {
+        for iter in JSONdata {
+            if let obj = iter as? [String: Any] {
+                self.CDdata.append(CD(dict: obj))
+            }
+        }
+        self.maxIndex = self.CDdata.endIndex-1
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func checkIfFileExists() -> Bool {
+        let documentsURL = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        let fooURL = documentsURL.appendingPathComponent("albums.txt")
+        return FileManager().fileExists(atPath: fooURL.path)
     }
     
 }
